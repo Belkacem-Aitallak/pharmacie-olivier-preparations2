@@ -1,0 +1,261 @@
+Create a complete web application for a pharmacy called **"Pharmacie l’Olivier"** to manage magistral preparations.
+
+Use the following technologies:
+
+Backend: Python with Flask
+Database: SQLite
+Frontend: HTML, CSS, JavaScript
+
+The application must run inside one Replit project and start with:
+
+python app.py
+
+The website header must display:
+
+Pharmacie l’Olivier
+Gestion des Préparations Magistrales
+
+All prices must be displayed in **Algerian Dinar (DZD)**.
+
+Use a clean pharmacy-style interface with a green theme.
+
+---
+
+MAIN PAGES
+
+Create the following pages:
+
+Dashboard
+Add Preparation
+Preparation Details
+
+Navigation menu:
+
+Dashboard | Ajouter Préparation
+
+---
+
+DASHBOARD
+
+Display all preparations in a table with the following columns:
+
+ID
+Patient Name
+Phone Number
+Doctor Name
+Composition Summary
+Total Price (DZD)
+Status
+Note
+Preparator Name
+Date
+
+Add a search bar that allows searching by:
+
+Patient name
+Doctor name
+
+Allow editing **status and note directly from the dashboard**.
+
+Clicking a preparation should open the **Preparation Details page**.
+
+---
+
+ADD PREPARATION PAGE
+
+Create a form containing the following fields:
+
+Patient Name
+Phone Number
+Doctor Name
+Preparator Name
+
+Status dropdown:
+
+Ordonnance reçue
+En attente
+En préparation
+Prêt
+Délivré
+
+Preparation Note (text field)
+
+Examples of notes:
+
+Patient did not answer phone
+Patient will come tomorrow
+Waiting for ingredient
+Preparation ready but not collected
+
+---
+
+PRESCRIPTION IMAGE UPLOAD
+
+Add a field to upload the **photo of the prescription**.
+
+The pharmacist must be able to upload an image from:
+
+Computer
+Mobile phone camera or gallery
+
+Accepted formats:
+
+JPG
+PNG
+JPEG
+
+The image must be saved in a folder called:
+
+uploads/prescriptions
+
+Store the image filename in the database.
+
+On the **Preparation Details page**, display the uploaded prescription image.
+
+---
+
+COMPOSITION SYSTEM
+
+The pharmacist must be able to add multiple components to a preparation.
+
+Each component must be selected from a **dropdown list of predefined components**.
+
+When a component is selected, the system automatically displays:
+
+Component name
+Unit type (g / ml / unit)
+Price per unit (DZD)
+
+The pharmacist only enters:
+
+Quantity
+
+Then the system automatically calculates:
+
+Component Total = Quantity × Price per Unit
+
+Allow adding multiple components dynamically using an **Add Component button**.
+
+---
+
+PREDEFINED COMPONENTS
+
+The dropdown list must contain the following components.
+
+Components measured in grams (g):
+
+Acide salicylique
+Acide ascorbique
+Hydroquinone
+Vitamine A
+Dexamethasone
+Vaseline
+Propylène glycol
+
+Components measured in milliliters (ml):
+
+Alcool
+
+Components measured by unit:
+
+Clotasole pommade
+Clotasole crème
+Cortisaf pommade
+Cortisaf crème
+Betamethasone
+Fucidine
+Betsol
+
+Each component must contain:
+
+Name
+Unit type
+Price per unit (DZD)
+
+Prices must be stored in the database.
+
+---
+
+AUTOMATIC PRICE CALCULATION
+
+For each component:
+
+Component Total = Quantity × Price per Unit
+
+The system must automatically calculate:
+
+Total Preparation Price = sum of all component totals
+
+Display clearly:
+
+Total Price: XXXX DZD
+
+The total price must update automatically when quantities change.
+
+---
+
+PREPARATION DETAILS PAGE
+
+Display the following information:
+
+Patient Name
+Phone Number
+Doctor Name
+Preparator Name
+Status
+Note
+
+Display the uploaded **prescription image**.
+
+Display a composition table:
+
+Component | Quantity | Unit Price | Total
+
+Example:
+
+Acide salicylique | 4 g | 120 DZD | 480 DZD
+Vaseline | 20 g | 30 DZD | 600 DZD
+
+Display the final total price clearly in DZD.
+
+---
+
+DATABASE STRUCTURE
+
+Create a SQLite database with the following tables.
+
+Table: components
+
+id
+name
+unit_type (g, ml, unit)
+price_per_unit
+
+Table: preparations
+
+id
+patient_name
+phone_number
+doctor_name
+preparator_name
+status
+note
+prescription_image
+total_price
+date_created
+
+Table: preparation_components
+
+id
+preparation_id
+component_id
+quantity
+component_total
+
+---
+
+Ensure the application works correctly with Flask routing and SQLite.
+
+The application must start with:
+
+python app.py
